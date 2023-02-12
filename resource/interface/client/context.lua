@@ -92,6 +92,10 @@ end)
 RegisterNUICallback('clickContext', function(id, cb)
     cb(1)
 
+    SendNUIMessage({
+        action = 'hideContext'
+    })        
+        
     if math.type(tonumber(id)) == 'float' then
         id = math.tointeger(id)
     elseif tonumber(id) then
@@ -109,10 +113,6 @@ RegisterNUICallback('clickContext', function(id, cb)
     if data.onSelect then data.onSelect(data.args) end
     if data.event then TriggerEvent(data.event, data.args) end
     if data.serverEvent then TriggerServerEvent(data.serverEvent, data.args) end
-
-    SendNUIMessage({
-        action = 'hideContext'
-    })
 end)
 
 RegisterNUICallback('closeContext', closeContext)
